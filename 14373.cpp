@@ -133,7 +133,7 @@ int main()
         }
         else if (t == 1)
         {
-            if (que.isEmpty())
+            if (!que.isEmpty())
                 que.deQueue();
             cout << que.frontQueue() << " " << que.lenQueue() << endl;
         }
