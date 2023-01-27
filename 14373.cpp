@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
-
+//只过了两个点，不知道类继承能不能实现
+//我是超级大傻逼，又不知道为啥掉了判断里面的！
 class illegalSize{};
 class outOfBound{};
 
@@ -17,11 +18,12 @@ class seqQueue
         bool isEmpty();
         bool isFull();
         elemType front();
-        void enQueue(const elemType &x);
+        void enQueue(const elemType &element);
         void deQueue();
         int lenQueue();
         int frontQueue();
         int rearQueue();
+        void clear();
         ~seqQueue();
 };
 
@@ -50,15 +52,15 @@ template <class elemType>
 elemType seqQueue<elemType>::front() //读取队首元素的值，队首元素不变
 {
     if (isEmpty()) throw outOfBound();
-    return array[Front];
+    return array[(Front + 1) %maxSize];
 }
 
 template <class elemType>
-void seqQueue<elemType>::enQueue(const elemType &x)
+void seqQueue<elemType>::enQueue(const elemType &element)
 {
     if(isFull()) doubleSpace();
-    array[Rear] = x;
     Rear = (Rear + 1) % maxSize;
+    array[Rear] = element; 
 }
 
 template <class elemType>
@@ -94,6 +96,12 @@ int seqQueue<elemType>::rearQueue()
 }
 
 template <class elemType>
+void seqQueue<elemType>::clear()
+{
+    Front = Rear = 0;
+}
+
+template <class elemType>
 void seqQueue<elemType>::doubleSpace() //拓展队列元素的储存空间
 {
     elemType *newArray;
@@ -101,12 +109,13 @@ void seqQueue<elemType>::doubleSpace() //拓展队列元素的储存空间
     newArray = new elemType[2 * maxSize];
     if (!newArray) throw illegalSize();
 
-    for (int i = 0, j = Front; j != Rear; i++, j = (j + 1) % maxSize)
+    for (int i = 1, j = Front; j != Rear; i++, j = (j + 1) % maxSize)
     {
         newArray[i] = array[j];
 
     }
-    delete []array;
+    delete[] array;
+    array = newArray;
     Front = 0;
     Rear = j;
     maxSize = 2 * maxSize;
