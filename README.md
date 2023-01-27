@@ -18,4 +18,4 @@
 [13002-Ruko Sort](https://acm.sjtu.edu.cn/OnlineJudge/problem?problem_id=13002)  
 [14012-合并果子](https://acm.sjtu.edu.cn/OnlineJudge/problem?problem_id=14012)  
 [14151-出栈序列](https://acm.sjtu.edu.cn/OnlineJudge/problem?problem_id=14151)  
-[14373-循环队列]（https://acm.sjtu.edu.cn/OnlineJudge/problem?problem_id=14373)
+[14373-循环队列](https://acm.sjtu.edu.cn/OnlineJudge/problem?problem_id=14373)
